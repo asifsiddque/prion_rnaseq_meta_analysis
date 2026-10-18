@@ -1,0 +1,49 @@
+=============================================================
+  PRION RNA-SEQ META-ANALYSIS — STREAM 1 SUMMARY
+=============================================================
+
+  Stratum A studies processed : 5
+  Stratum D studies processed : 4
+
+  --- Per-Study DEG Counts (padj<=0.05, |LFC|>=0.5) ---
+    GSE149805    : 0 up, 0 down (0 total)
+    GSE198063    : 3 up, 0 down (3 total)
+    GSE144738    : 736 up, 18 down (754 total)
+    GSE189527    : 249 up, 4 down (253 total)
+    GSE201249    : 153 up, 2 down (155 total)
+
+  --- Meta-Analysis ---
+    Genes tested (>= 3 studies) : 16773
+    MCPS total                   : 6
+    MCPS upregulated             : 6
+    MCPS downregulated           : 0
+    Excluded (I2 > 75%)          : 0
+
+  --- Replication (Stratum D) ---
+    GSE90977     : 0.0% (0/6 same direction, padj<=0.05)
+    GSE124932    : 50.0% (3/6 same direction, padj<=0.05)
+    GSE207251    : 0.0% (0/4 same direction, padj<=0.05)
+    GSE202275    : 100.0% (6/6 same direction, padj<=0.05)
+
+  --- LOO Sensitivity ---
+    LOO (excl. GSE149805   ): 100.0% MCPS overlap (6 genes)
+    LOO (excl. GSE198063   ): 100.0% MCPS overlap (72 genes)
+    LOO (excl. GSE144738   ): 16.7% MCPS overlap (4 genes)
+    LOO (excl. GSE189527   ): 50.0% MCPS overlap (3 genes)
+    LOO (excl. GSE201249   ): 83.3% MCPS overlap (11 genes)
+
+  --- Pathway Enrichment ---
+    Consensus pathways (>= 3/5 studies) : 487
+    GSEA significant gene sets          : 147
+
+  --- Output Files ---
+    DESeq2 results  : /content/drive/MyDrive/prion_rnaseq_meta_analysis/results/deseq2/
+    Meta-analysis   : /content/drive/MyDrive/prion_rnaseq_meta_analysis/results/meta_analysis/
+    Replication     : /content/drive/MyDrive/prion_rnaseq_meta_analysis/results/stream1/replication/
+    Enrichment      : /content/drive/MyDrive/prion_rnaseq_meta_analysis/results/stream1/enrichment/
+    Figures         : /content/drive/MyDrive/prion_rnaseq_meta_analysis/reports/figures/stream1/
+
+=============================================================
+  Stream 1 complete. Proceed to Stream 2 (Human Validation)
+  and Stream 3 (Peripheral Analysis).
+=============================================================

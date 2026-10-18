@@ -1,0 +1,4 @@
+tissue_1,tissue_2,n_degs_t1,n_degs_t2,n_shared,jaccard
+Whole blood,Spleen,14,1627,1,0.001
+Whole blood,Skeletal muscle,14,293,0,0
+Spleen,Skeletal muscle,1627,293,40,0.021

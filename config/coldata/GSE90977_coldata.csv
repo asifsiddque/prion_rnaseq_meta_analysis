@@ -1,0 +1,17 @@
+sample_id,files,condition,time_point,gsm_id
+SRR5084283,../results/salmon_quant/GSE90977/SRR5084283/quant.sf,control,120 days post infection,GSM2418613
+SRR5084284,../results/salmon_quant/GSE90977/SRR5084284/quant.sf,control,120 days post infection,GSM2418614
+SRR5084285,../results/salmon_quant/GSE90977/SRR5084285/quant.sf,control,120 days post infection,GSM2418615
+SRR5084286,../results/salmon_quant/GSE90977/SRR5084286/quant.sf,control,120 days post infection,GSM2418616
+SRR5084287,../results/salmon_quant/GSE90977/SRR5084287/quant.sf,prion,120 days post infection,GSM2418617
+SRR5084288,../results/salmon_quant/GSE90977/SRR5084288/quant.sf,prion,120 days post infection,GSM2418618
+SRR5084289,../results/salmon_quant/GSE90977/SRR5084289/quant.sf,prion,120 days post infection,GSM2418619
+SRR5084290,../results/salmon_quant/GSE90977/SRR5084290/quant.sf,prion,120 days post infection,GSM2418620
+SRR5084291,../results/salmon_quant/GSE90977/SRR5084291/quant.sf,control,180 days post infection,GSM2418621
+SRR5084292,../results/salmon_quant/GSE90977/SRR5084292/quant.sf,control,180 days post infection,GSM2418622
+SRR5084293,../results/salmon_quant/GSE90977/SRR5084293/quant.sf,control,180 days post infection,GSM2418623
+SRR5084294,../results/salmon_quant/GSE90977/SRR5084294/quant.sf,control,180 days post infection,GSM2418624
+SRR5084295,../results/salmon_quant/GSE90977/SRR5084295/quant.sf,prion,180 days post infection,GSM2418625
+SRR5084296,../results/salmon_quant/GSE90977/SRR5084296/quant.sf,prion,180 days post infection,GSM2418626
+SRR5084297,../results/salmon_quant/GSE90977/SRR5084297/quant.sf,prion,180 days post infection,GSM2418627
+SRR5084298,../results/salmon_quant/GSE90977/SRR5084298/quant.sf,prion,180 days post infection,GSM2418628

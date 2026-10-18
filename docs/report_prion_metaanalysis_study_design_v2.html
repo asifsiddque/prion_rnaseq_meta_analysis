@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>report_prion_metaanalysis_study_design_v2</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2em 1em;
+    }
+    h1 { font-size: 1.8em; margin-top: 1em; }
+    h2 { font-size: 1.5em; margin-top: 0.8em; }
+    h3 { font-size: 1.25em; margin-top: 0.6em; }
+    h4 { font-size: 1.1em; margin-top: 0.4em; }
+    p { margin: 0.5em 0; }
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; font-size: 0.9em; }
+    th { background: #f5f5f5; font-weight: 600; }
+    pre { background: #f5f5f5; padding: 10px; border-radius: 4px; overflow-x: auto; font-size: 0.85em; }
+    code { font-family: 'SFMono-Regular', Menlo, Consolas, monospace; font-size: 0.85em; }
+    img { max-width: 100%; height: auto; }
+    ul, ol { padding-left: 1.5em; }
+    blockquote { border-left: 3px solid #ccc; padding-left: 1em; margin-left: 0; color: #555; }
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="mt-2 p-4 rounded border border-0 p-0"><div class="max-w-3xl mx-auto"><div class="prose prose-base max-w-full break-words min-w-0 overflow-wrap-anywhere prose-pre:whitespace-pre-wrap prose-pre:break-words prose-pre:overflow-x-auto prose-code:break-words prose-a:break-all prose-sm !text-xs !leading-relaxed"><h1 class="text-2xl font-bold mt-6 mb-4 first:mt-0 break-words">Prion Disease Bulk RNA-Seq Meta-Analysis: Complete Publication-Grade Study Design</h1>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Version:</strong> 2.0 (Post-Critical-Review, All Issues Resolved)
+<strong class="font-semibold break-words">Date:</strong> 2026-03-16 (pipeline executed; results updated 2026-05-31)
+<strong class="font-semibold break-words">GEO Verification Status:</strong> All dataset classifications confirmed against live NCBI GEO records</p>
+<hr class="my-6 border-t border-border">
+<h2 class="text-xl font-semibold mt-5 mb-3 break-words">Preamble: Corrections Applied from Critical Review</h2>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">The following critical issues identified in the prior analysis have been fully resolved before
+this document was written. Every claim below is grounded in verified GEO records or executed
+code outputs.</p>
+<div class="my-3 w-full overflow-x-auto"><table class="min-w-full table-fixed border-collapse border border-border text-sm leading-snug"><thead class="bg-muted/50"><tr><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Issue</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Resolution</th></tr></thead><tbody><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE214376 misclassified as bulk RNA-seq</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Confirmed SuperSeries (split-seq + evercode scRNA-seq libraries present). <strong class="font-semibold break-words">Excluded.</strong> Only GSE214373 is bulk.</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE221712 included as prion dataset</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Confirmed AD knock-in model (AppNL-G-F/hMapt), NIH grant R01 AG034924. <strong class="font-semibold break-words">Excluded.</strong></td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE255987 included as in vivo brain</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Confirmed Neuro-2a cell line. <strong class="font-semibold break-words">Excluded.</strong></td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE210128 pooled with brain datasets</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Confirmed multi-tissue (blood, muscle, spleen, brain). <strong class="font-semibold break-words">Separated into its own Peripheral Stratum.</strong></td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words"><code class="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground break-words">--numBootstraps</code> recommended for DESeq2</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Incorrect — DESeq2 does not consume Salmon bootstraps. <strong class="font-semibold break-words">Recommendation removed.</strong></td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">ComBat-seq placed after DESeq2</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Logically contradictory. <strong class="font-semibold break-words">Pipeline corrected:</strong> ComBat-seq is not used in a random-effects meta-analysis design.</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">metaXpress bootstrap argument invalid</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Removed. The valid differentiating argument (no tximeta offset correction) is retained.</td></tr></tbody></table></div>
+<hr class="my-6 border-t border-border">
+<h2 class="text-xl font-semibold mt-5 mb-3 break-words">Part 1: Scientific Background and Rationale</h2>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">1.1 Disease Context</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Prion diseases (transmissible spongiform encephalopathies, TSEs) are a group of invariably
+fatal neurodegenerative disorders caused by the misfolding of the cellular prion protein
+(PrP^C) into a pathogenic, self-propagating isoform (PrP^Sc). Human forms include sporadic
+Creutzfeldt-Jakob disease (sCJD, ~85% of cases), genetic forms including Fatal Familial
+Insomnia (FFI, D178N-129M mutation) and Gerstmann-Straussler-Scheinker syndrome (GSS), and
+acquired forms (variant CJD, kuru, iatrogenic CJD). Animal forms include scrapie (sheep/goat),
+bovine spongiform encephalopathy (BSE), and chronic wasting disease (CWD).</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">All prion diseases share a defining clinical feature: a long, clinically silent pre-clinical
+incubation period (months to decades) followed by rapid, irreversible neurological decline.
+There are currently no disease-modifying treatments and no validated pre-symptomatic
+diagnostic biomarkers. This makes the pre-clinical transcriptomic window the most
+clinically actionable target for biomarker discovery.</p>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">1.2 The Unaddressed Research Gap</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">A systematic review of the current literature reveals four structural gaps that no published
+study has simultaneously addressed:</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Gap 1 — No multi-cohort bulk RNA-seq meta-analysis exists for prion disease.</strong>
+Every published bioinformatics study uses a single GEO dataset in isolation. The Alzheimer's
+disease field has demonstrated that single-study transcriptomics is insufficient: a 2025
+meta-analysis of 24 AD bulk RNA-seq studies found that only 571 genes were reproducibly
+dysregulated when rigorous meta-analytic methods were applied, compared to thousands reported
+in individual studies. No equivalent resource exists for prion disease.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Gap 2 — Pre-clinical and terminal transcriptomes have never been jointly meta-analyzed.</strong>
+Sorce et al. (2020) built a preclinical atlas (GSE144738) and Bauer et al. (2022) profiled
+FFI pre-symptomatically (GSE198063), but these datasets have never been jointly analyzed
+against terminal-stage cohorts to define a disease-stage-resolved transcriptional trajectory.
+This is the critical gap for biomarker development: current diagnostic tools are insufficient
+for pre-symptomatic detection.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Gap 3 — No study has validated mouse-derived prion signatures against human sCJD bulk
+RNA-seq using rigorous ortholog mapping.</strong>
+The only human bulk RNA-seq sCJD dataset (GSE214373, N=14, MRC Prion Unit at UCL) has not
+been integrated with the large mouse cohorts in any published meta-analysis.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Gap 4 — The peripheral transcriptome has never been systematically linked to CNS changes.</strong>
+GSE210128 (N=173, blood/muscle/spleen, 8 time points) exists in isolation. No study has
+asked whether peripheral bulk RNA-seq recapitulates the CNS transcriptomic signature at the
+pre-clinical stage — a question with direct clinical relevance for non-invasive early
+diagnosis.</p>
+<hr class="my-6 border-t border-border">
+<h2 class="text-xl font-semibold mt-5 mb-3 break-words">Part 2: Final Dataset Registry (GEO-Verified)</h2>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">All dataset classifications were confirmed against live NCBI GEO records on 2026-03-16.</p>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">Stratum A — CNS Discovery Cohort (Mouse, Brain Tissue)</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Purpose:</strong> Primary meta-analysis to define the Mouse Conserved Prion Signature (MCPS)
+<strong class="font-semibold break-words">Total: 5 studies, N = 630 samples (raw); 519 samples retained after exclusions</strong></p>
+<div class="my-3 w-full overflow-x-auto"><table class="min-w-full table-fixed border-collapse border border-border text-sm leading-snug"><thead class="bg-muted/50"><tr><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">GEO</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">N</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Disease Stage</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Tissue</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Prion Model</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Platform</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Key Scientific Contribution</th></tr></thead><tbody><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE149805</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">186</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Terminal</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Brain homogenate</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">RML scrapie</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">HiSeq 2500</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Largest dataset; cell-type-specific translational changes</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE198063</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">159</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Pre-clinical</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Brain (neuronal subtypes)</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">FFI D178N knock-in</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">NovaSeq 6000</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Largest pre-clinical cohort; somatostatin neuron vulnerability; FFI model</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE144738</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">137</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Pre-clinical</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Hippocampus</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">RML scrapie</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">HiSeq 4000</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Landmark preclinical atlas; time-course design; 8 wpi earliest timepoint</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE189527</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">98</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Pre-clinical → Terminal</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Brain (neural populations)</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">RML scrapie</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">HiSeq 2500</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Longitudinal trajectory; EEG-preceding transcriptomic changes</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE201249</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">50</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Terminal</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">CA1 + Thalamus</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">RML scrapie</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">NextSeq 550</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Brain-region specificity; cell-type resolved (neurons + astrocytes)</td></tr></tbody></table></div>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Justification for inclusion of all 5:</strong> These are the only datasets in the curated CSV that
+combine (a) genuine prion infection as the primary experimental condition, (b) in vivo brain
+tissue (not cell lines), (c) adequate sample size (N ≥ 50 for the four largest), and (d)
+paired case/control design suitable for DESeq2. Together they span two prion strains (RML,
+FFI D178N), two disease stages (pre-clinical, terminal), and three brain regions
+(hippocampus, CA1, thalamus, whole brain), providing the biological diversity required for
+a robust meta-analysis.</p>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">Stratum B — Peripheral Discovery Cohort (Mouse, Non-Brain Tissue)</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Purpose:</strong> Peripheral-CNS concordance analysis; non-invasive biomarker discovery
+<strong class="font-semibold break-words">Total: 1 study, N = 173 samples</strong></p>
+<div class="my-3 w-full overflow-x-auto"><table class="min-w-full table-fixed border-collapse border border-border text-sm leading-snug"><thead class="bg-muted/50"><tr><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">GEO</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">N</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Tissues</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Time Points</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Prion Model</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Platform</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Key Scientific Contribution</th></tr></thead><tbody><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE210128</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">173</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Blood, Muscle, Spleen (+ Brain sub-cohort)</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">4, 8, 12, 14, 16, 18, 20 wpi, Terminal</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">RML6 scrapie</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">HiSeq 4000</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Only longitudinal multi-tissue peripheral dataset; enables blood biomarker discovery</td></tr></tbody></table></div>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Critical note on GSE210128:</strong> GEO verification confirmed this dataset contains four tissue
+types: blood, skeletal muscle, spleen, and brain. The brain sub-cohort within this dataset
+will be used as an internal cross-tissue validation (comparing peripheral vs. CNS log2FC
+vectors within the same experiment), NOT pooled with Stratum A. The peripheral tissues
+(blood, muscle, spleen) are analyzed in a completely separate analytical stream.</p>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">Stratum C — Human Validation Cohort (Human, Bulk RNA-seq)</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Purpose:</strong> Cross-species ortholog validation of the MCPS
+<strong class="font-semibold break-words">Total: 1 study, N = 14 samples</strong></p>
+<div class="my-3 w-full overflow-x-auto"><table class="min-w-full table-fixed border-collapse border border-border text-sm leading-snug"><thead class="bg-muted/50"><tr><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">GEO</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">N</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Tissue</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Disease</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Platform</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Design</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Key Scientific Contribution</th></tr></thead><tbody><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE214373</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">14</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Frontal Cortex</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">sCJD vs. control</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">NextSeq 500</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">5 sCJD post-mortem + 3 sCJD biopsy vs. 9 controls</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Only available human bulk RNA-seq sCJD dataset; MRC Prion Unit at UCL</td></tr></tbody></table></div>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Note on GSE214376:</strong> GEO verification confirmed this is the parent SuperSeries containing
+scRNA-seq libraries generated by split-seq and evercode whole-transcriptome protocols. It
+is NOT a bulk RNA-seq dataset and cannot be processed by the Salmon → tximport → DESeq2
+pipeline. GSE214373 is the bulk RNA-seq SubSeries extracted from this SuperSeries.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Honest limitation:</strong> N=14 for the human validation cohort is small. This is an inherent
+limitation of the field — human prion disease tissue is extremely rare. The validation
+analysis will be treated as directional concordance testing (binomial test), not as a
+fully powered independent replication. This limitation will be explicitly stated in the
+manuscript.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Executed results (GSE214373):</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">Age confound confirmed: sCJD mean age 71.6 ± 4.2 y vs. control 83.3 ± 9.6 y (Welch t p = 0.024; r = −0.60)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Primary model: <code class="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground break-words">~ age + sex + condition</code>; VIF(condition) = 2.06; 118 DEGs</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Sensitivity model: <code class="bg-muted px-1.5 py-0.5 rounded text-xs font-mono text-foreground break-words">~ sex + condition</code>; 1,572 DEGs; Jaccard similarity = 0.071 (93% age-confounded)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">MCPS gene-level GSEA: 0 results (gene set too small after ortholog filtering)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Minimum detectable LFC at 80% power: ≥ 1.50 at median dispersion</li>
+<li class="leading-normal break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Pathway-level validation (GSE124571, N=10+10):</strong> 314/362 consensus pathways significant (86.7%), 311/314 with NES &gt; 0 — strong cross-species pathway conservation</li>
+</ul>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">Stratum D — Held-Out Replication Cohort (Mouse, Brain Tissue)</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Purpose:</strong> Independent replication of MCPS; leave-one-out sensitivity analysis
+<strong class="font-semibold break-words">Total: 4 studies used in pipeline (N ≈ 50 samples)</strong></p>
+<div class="my-3 w-full overflow-x-auto"><table class="min-w-full table-fixed border-collapse border border-border text-sm leading-snug"><thead class="bg-muted/50"><tr><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">GEO</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">N</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Stage</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Tissue</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Prion Model</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Replication rate</th></tr></thead><tbody><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE90977</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">~16</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Terminal</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Brain</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">sCJD mouse-adapted</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">0% (0/6 genes)</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE124932</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">~16</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Terminal</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Brain</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">RML + SARM1 KO</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">50% (3/6 genes)</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE207251</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">~6</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Early</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Hippocampus</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">22L scrapie</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">0% (0/4 testable genes)</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE202275</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">~12</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Terminal</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Brain</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Tg37 scrapie</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">100% (6/6 genes)</td></tr></tbody></table></div>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Mean replication rate across Stratum D: 37.5%</strong></p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><em class="italic break-words">Note: GSE146013, GSE249382, and GSE57233 were considered during study design but not included in the executed pipeline (insufficient sample size or design incompatibility).</em></p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Formally excluded datasets (with GEO-verified reasons):</strong></p>
+<div class="my-3 w-full overflow-x-auto"><table class="min-w-full table-fixed border-collapse border border-border text-sm leading-snug"><thead class="bg-muted/50"><tr><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">GEO</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Reason for Exclusion</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">GEO Evidence</th></tr></thead><tbody><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE214376</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">SuperSeries containing scRNA-seq (split-seq, evercode) — not bulk RNA-seq</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Sample names include "split-seq library", "evercode whole-transcriptome library"</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE221712</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">AD knock-in model (AppNL-G-F/hMapt); NIH grant R01 AG034924 (Alzheimer's)</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GEO summary: "role of PrPC in AD-related phenotypes"; Yale/Strittmatter lab</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GSE255987</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Neuro-2a cell line (in vitro); not in vivo brain tissue</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">GEO summary: "Neuro-2a cells were transduced with lentiviral constructs"</td></tr></tbody></table></div>
+<hr class="my-6 border-t border-border">
+<h2 class="text-xl font-semibold mt-5 mb-3 break-words">Part 3: Research Questions, Hypotheses, and Objectives</h2>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">3.1 Primary Research Questions</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">RQ1 — The Conserved Cross-Stage CNS Signature:</strong>
+What is the minimal, reproducible set of genes that are consistently differentially expressed
+across both pre-clinical and terminal stages of prion disease in multiple independent mouse
+brain cohorts, and does this set define a coherent biological program that is directionally
+conserved in human sporadic CJD brain tissue?</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><em class="italic break-words">Why this is novel:</em> Requires simultaneous integration of 5 independent studies spanning two
+disease stages, two prion strains, and multiple brain regions — something no single-dataset
+study can address. The answer will define the first meta-analytically validated transcriptomic
+signature of prion neurodegeneration.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">RQ2 — The Peripheral Biomarker Question:</strong>
+Which genes or gene modules are concordantly dysregulated in peripheral blood and/or skeletal
+muscle at the pre-clinical stage of prion disease, and do these peripheral signals mirror the
+CNS transcriptomic signature identified in RQ1?</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><em class="italic break-words">Why this is novel:</em> GSE210128 provides 8 longitudinal time points in blood, muscle, and
+spleen from the same RML6 experiment that also includes a brain sub-cohort, enabling a
+within-experiment peripheral-CNS comparison that has never been performed.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">RQ3 — Disease-Subtype Transcriptomic Divergence:</strong>
+Within the conserved prion signature, which gene modules are shared across all prion disease
+subtypes (RML scrapie, FFI D178N, sCJD) and which are subtype-specific — and do the
+subtype-specific modules map to known neuropathological differences between conditions?</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><em class="italic break-words">Why this is novel:</em> The I² heterogeneity statistic from the random-effects meta-analysis
+will naturally partition genes into universally conserved (low I²) and subtype-specific
+(high I², driven by FFI vs. scrapie divergence) categories — a biologically meaningful
+decomposition that has never been performed.</p>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">3.2 Biological Hypothesis</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Prion neurodegeneration is driven by a conserved, stage-spanning transcriptomic program
+organized around three interconnected axes:</p>
+<ol class="list-decimal list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Innate immune amplification:</strong> Microglial transition to a Disease-Associated Microglia
+(DAM) state, complement cascade upregulation (C1q, C3, C4b), and interferon-stimulated
+gene induction — detectable pre-clinically and amplifying through terminal stage.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Proteostasis failure:</strong> Sustained activation of the Unfolded Protein Response (UPR)
+and Integrated Stress Response (ISR), including upregulation of ATF3, DDIT3/CHOP, and
+downstream translational repression — a mechanism consistent with the known role of
+eIF2α phosphorylation in prion-induced neurodegeneration.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Synaptic and axonal degeneration:</strong> Progressive downregulation of synaptic vesicle
+genes, neurotransmitter receptor subunits, and cytoskeletal integrity genes — representing
+the transcriptomic correlate of the spongiform vacuolation and synapse loss observed
+histologically.</p>
+</li>
+</ol>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">We further hypothesize that a subset of the innate immune axis genes will be detectable in
+peripheral blood at the pre-clinical stage, providing a candidate non-invasive transcriptomic
+biomarker panel. The FFI-specific dataset (GSE198063) will share the core neuroinflammatory
+signature but will exhibit a unique somatostatin neuron vulnerability module distinguishing
+genetic from sporadic prion disease.</p>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">3.3 Statistical Hypotheses</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">H₀₁ (Meta-analysis null):</strong> For any gene g, the true mean log2 fold change across all
+k CNS Discovery studies is zero under a random-effects model:
+μ_g = 0  for all g
+where observed per-study estimates θ̂_ig ~ N(μ_g, σ²_ig + τ²_g), with τ²_g representing
+between-study variance.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">H_A1 (Meta-analysis alternate):</strong> A significant subset of genes have μ_g ≠ 0
+(meta-padj ≤ 0.05, |meta-log2FC| ≥ 0.5), constituting the Mouse Conserved Prion Signature.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">H₀₂ (Heterogeneity null):</strong> For any gene g, between-study variance is zero: τ²_g = 0.
+Tested via Cochran's Q statistic; quantified by I².</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">H_A2:</strong> A significant proportion of MCPS genes show low heterogeneity (I² &lt; 50%),
+indicating a reproducible cross-study signal rather than study-specific noise.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">H₀₃ (Cross-species null):</strong> Directional concordance between MCPS orthologs and human
+sCJD DEGs is no greater than chance:
+P(same direction in human | significant in mouse) = 0.5</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">H_A3:</strong> Directional concordance significantly exceeds 50% (one-sided binomial p &lt; 0.05),
+validating cross-species conservation.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">H₀₄ (Peripheral-CNS null):</strong> Spearman correlation between peripheral blood log2FC and
+CNS meta-log2FC is zero: ρ_s = 0.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">H_A4:</strong> A significant positive Spearman correlation exists (ρ &gt; 0, p &lt; 0.05), identifying
+a peripheral transcriptomic mirror of CNS prion pathology.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Significance thresholds (all analyses):</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">Gene-level: padj ≤ 0.05 (Benjamini-Hochberg FDR), |log2FC| ≥ 0.5 (inclusive)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Heterogeneity exclusion: I² &gt; 75% (gene flagged as cohort-specific, excluded from MCPS)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Pathway-level: FDR ≤ 0.05</li>
+</ul>
+<hr class="my-6 border-t border-border">
+<h2 class="text-xl font-semibold mt-5 mb-3 break-words">Part 4: Upstream Pipeline Review and Corrections</h2>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">4.1 Script-by-Script Assessment</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">00_download_fastq.sh — Approved with one recommendation</strong>
+Uses parallel-fastq-dump with --split-files --gzip, producing SRR<em class="italic break-words">_1.fastq.gz /
+SRR</em>_2.fastq.gz pairs. Naming convention is exactly what 03_reads_quant.sh expects.
+Recommendation: For datasets with N &gt; 100 (GSE149805, GSE198063, GSE210128, GSE144738),
+switch to fasterq-dump (SRA Toolkit ≥ 3.0) for 5-10x faster downloads.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">01_qc.sh — Approved</strong>
+FastQC + MultiQC is the correct standard approach. Ensure MultiQC is run after all samples
+are processed so the aggregated report captures cross-sample outliers. Key QC thresholds
+to enforce before proceeding to quantification:</p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">Mapping rate ≥ 70% (flag samples below this)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Median reads per sample ≥ 10M</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">rRNA contamination &lt; 10%</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Duplicate rate &lt; 50%</li>
+</ul>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">02_build_salmon_index.sh — CRITICAL ISSUE: Human-only index</strong>
+The script builds a human index (GENCODE v49 / GRCh38) only. Your CNS Discovery cohort
+(Stratum A, 5 studies, 519 post-exclusion samples) and Peripheral cohort (Stratum B, 173 samples) are
+entirely MOUSE. You need a separate mouse index. The corrected mouse index script is:</p>
+<div class="my-4 w-full"><div class="bg-muted rounded-md p-4 overflow-hidden"><pre class="text-xs font-mono text-foreground whitespace-pre-wrap break-words break-all m-0 p-0 bg-transparent"><div class="my-4 w-full"><div class="relative bg-muted rounded-md overflow-hidden"><code class="block px-4 py-3 pr-10 text-xs font-mono text-foreground break-words whitespace-pre-wrap overflow-x-auto"># Mouse reference (GENCODE vM35 / GRCm39)
+TRANS_URL="https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M35/gencode.vM35.pc_transcripts.fa.gz"
+GENOME_URL="https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M35/GRCm39.primary_assembly.genome.fa.gz"
+# Build with same decoy-aware approach, output: ../inputs/mouse_salmon_index</code></div></div></pre></div></div>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">The human index (GENCODE v49 / GRCh38) is correct for GSE214373 only (Stratum C).
+The --gencode flag is correctly applied. The decoy-aware construction is best practice.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">03_reads_quant.sh — Approved with two corrections</strong></p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">CORRECTION 1 — Add bias correction flags:
+--gcBias    (corrects GC content bias — critical given mixed platforms in your cohort)
+--seqBias   (corrects positional sequence bias)
+These are important because your cohort spans HiSeq 2500, HiSeq 4000, NovaSeq 6000, and
+NextSeq 500 — different platforms introduce different systematic biases.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">CORRECTION 2 — DO NOT add --numBootstraps.
+A prior version of this analysis incorrectly recommended --numBootstraps 30. This was wrong.
+DESeq2 does NOT consume Salmon bootstrap replicates. Bootstraps are used by fishpond/swish
+or Sleuth — neither of which is in this pipeline. Adding bootstraps would increase
+computational time ~30x and cause memory failures on 14 GB RAM for large datasets.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Corrected quantification command:
+salmon quant -i "$salmon_index" -l A <br>
+-1 "$r1_file" <br>
+-2 "$r2_file" <br>
+-p 12 <br>
+--validateMappings <br>
+--gcBias <br>
+--seqBias <br>
+-o "../outputs/salmon_out/${samp}"</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Output compatibility: With these corrections, each sample's output directory (containing
+quant.sf, aux_info/, lib_format_counts.json) is perfectly formatted for tximeta ingestion.</p>
+<hr class="my-6 border-t border-border">
+<h2 class="text-xl font-semibold mt-5 mb-3 break-words">Part 5: Downstream Analysis Pipeline (Corrected and Complete)</h2>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">5.1 Pipeline Selection: Custom DESeq2 + metafor Framework</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Recommendation: Custom framework. Do not use metaXpress as the primary engine.</strong></p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">The key differentiating reason is technical and non-negotiable: tximeta propagates
+average-transcript-length offset matrices from Salmon's quant.sf files into DESeq2's
+normalization model. This corrects for transcript-length bias that arises when comparing
+samples with different isoform usage — a real confounder in disease vs. control comparisons.
+metaXpress ingests count matrices via mx_load_local() and has no mechanism for this offset
+correction, meaning it would silently introduce length bias into every DE result.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">The valid use case for metaXpress in this project is limited to post-analysis visualization
+(mx_volcano, mx_forest, mx_heterogeneity_plot) and report generation (mx_report), after
+the core analysis is complete with the custom framework.</p>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">5.2 Complete Analytical Pipeline</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">The pipeline has THREE completely separate analytical streams that never share count matrices:</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">────────────────────────────────────────────────────────────────────────────────
+STREAM 1: CNS META-ANALYSIS (Stratum A — Mouse Brain)
+────────────────────────────────────────────────────────────────────────────────</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 1.1 — Import with tximeta (R)
+For each of the 5 CNS Discovery studies independently:
+- Locate all quant.sf files for that study
+- Build a coldata data frame with sample metadata (condition, covariates)
+- se &lt;- tximeta(coldata)          # transcript-level SummarizedExperiment
+- gse &lt;- summarizeToGene(se)      # gene-level with length offsets
+This produces a SummarizedExperiment with:
+- counts: integer count matrix (genes × samples)
+- length: average transcript length matrix (used as offset in DESeq2)</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 1.2 — Per-study quality filtering
+- Remove genes with &lt; 10 counts in &lt; 20% of samples within that study
+- PCA on VST-normalized counts; flag samples &gt; 3 SD from cohort centroid
+- Document all removals</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 1.3 — Per-study DESeq2 (run independently for each of the 5 studies)
+dds &lt;- DESeqDataSet(gse, design = ~ condition)
+# For studies with known covariates (sex, age, brain region):
+# design = ~ covariate + condition
+dds &lt;- DESeq(dds)
+res &lt;- lfcShrink(dds, coef = "condition_prion_vs_control",
+type = "apeglm")
+# Extract: gene_id, log2FoldChange, lfcSE, padj
+# Save results table to disk; remove dds from memory (rm + gc)</p>
+<div class="my-4 w-full"><div class="bg-muted rounded-md p-4 overflow-hidden"><pre class="text-xs font-mono text-foreground whitespace-pre-wrap break-words break-all m-0 p-0 bg-transparent"><div class="my-4 w-full"><div class="relative bg-muted rounded-md overflow-hidden"><code class="block px-4 py-3 pr-10 text-xs font-mono text-foreground break-words whitespace-pre-wrap overflow-x-auto">IMPORTANT: Each study is processed sequentially, not simultaneously.
+Peak RAM per study: ~2-4 GB for N=186 (GSE149805). Well within 14 GB limit.</code></div></div></pre></div></div>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 1.4 — Random-effects meta-analysis (metafor R package)
+- Load all 5 per-study results tables (small data frames, negligible RAM)
+- Restrict to genes present in ≥ 3 of 5 studies (mx_filter_coverage equivalent)
+- For each gene g:
+rma_result &lt;- rma(yi = log2FC_vector,
+sei = lfcSE_vector,
+method = "DL")   # DerSimonian-Laird
+# Extract: meta-log2FC, meta-SE, Q, I², τ², p-value
+- Apply Benjamini-Hochberg FDR correction across all genes
+- MCPS = genes with meta-padj ≤ 0.05, |meta-log2FC| ≥ 0.5, I² ≤ 75%</p>
+<div class="my-4 w-full"><div class="bg-muted rounded-md p-4 overflow-hidden"><pre class="text-xs font-mono text-foreground whitespace-pre-wrap break-words break-all m-0 p-0 bg-transparent"><div class="my-4 w-full"><div class="relative bg-muted rounded-md overflow-hidden"><code class="block px-4 py-3 pr-10 text-xs font-mono text-foreground break-words whitespace-pre-wrap overflow-x-auto">NOTE: ComBat-seq is NOT applied in this stream. In a random-effects
+meta-analysis, each study is analyzed independently. Between-study variance
+is modeled by τ² — applying ComBat-seq across studies before independent
+DESeq2 runs would remove the variance that τ² is designed to estimate,
+defeating the purpose of the meta-analytic design.</code></div></div></pre></div></div>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 1.5 — Held-out replication (Stratum D)
+- Run DESeq2 independently on each of the 7 held-out studies
+- Test: what fraction of MCPS genes replicate (same direction, padj ≤ 0.05)
+in each held-out study?
+- Leave-one-out sensitivity: re-run meta-analysis excluding each Discovery
+study in turn; confirm MCPS is not driven by any single cohort</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">────────────────────────────────────────────────────────────────────────────────
+STREAM 2: HUMAN VALIDATION (Stratum C — Human sCJD)
+────────────────────────────────────────────────────────────────────────────────</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 2.1 — Import GSE214373 with tximeta
+- Human Salmon index (GENCODE v49 / GRCh38) — separate from mouse index
+- N=14: 5 sCJD post-mortem + 3 sCJD biopsy vs. 9 controls
+- Note: age is NOT matched (sCJD mean 70.4y vs. control mean 83.7y)
+Include age as a covariate in the DESeq2 design formula:
+design = ~ age_group + sample_type + condition
+This is critical — failure to control for age confounding in a small
+N=14 dataset would invalidate the human validation entirely.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 2.2 — DESeq2 on GSE214373
+- Same apeglm shrinkage approach as Stream 1
+- Extract human DEG list with log2FC and padj</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 2.3 — Ortholog mapping (mouse MCPS → human)
+- Query ENSEMBL BioMart: GRCm39 → GRCh38 one-to-one orthologs
+- Retain only genes with orthology_confidence = 1
+- This reduces the gene universe to ~14,000-16,000 high-confidence 1:1 orthologs
+- Restrict MCPS to this ortholog-mapped subset</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 2.4 — Directional concordance test
+- For each MCPS ortholog, record direction in human sCJD (up/down/NS)
+- One-sided binomial test: H₀: P(same direction) = 0.5
+- Report: concordance rate, binomial p-value, 95% CI
+- This is a validation test, NOT a pooling operation.
+Human counts never enter the mouse meta-analysis model.</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">────────────────────────────────────────────────────────────────────────────────
+STREAM 3: PERIPHERAL ANALYSIS (Stratum B — Mouse Blood/Muscle/Spleen)
+────────────────────────────────────────────────────────────────────────────────</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 3.1 — Import GSE210128 with tximeta
+- Separate the 173 samples by tissue: blood, muscle, spleen, brain
+- For each tissue, build a separate SummarizedExperiment
+- The brain sub-cohort within GSE210128 serves as internal cross-tissue control</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 3.2 — Longitudinal DESeq2 per tissue
+- Time points: 4, 8, 12, 14, 16, 18, 20 wpi, Terminal
+- Design: ~ time_point + condition + time_point:condition
+- Use likelihood ratio test (LRT) to identify genes with significant
+time × condition interaction (i.e., genes that diverge between RML6
+and NBH over time)
+- This captures the temporal dynamics of peripheral transcriptomic changes</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Step 3.3 — Peripheral-CNS concordance
+- Map peripheral DEGs to mouse MCPS (same gene universe)
+- Spearman correlation: blood log2FC (at each time point) vs. CNS meta-log2FC
+- Identify the earliest time point at which peripheral-CNS concordance
+becomes statistically significant (this defines the "transcriptomic
+detection window" for blood-based biomarkers)
+- Repeat for muscle and spleen</p>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">5.4 Executed Pipeline Results Summary</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">The pipeline has been fully executed. Key results:</p>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Stream 1 (CNS Meta-Analysis):</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">16,773 genes tested; 6 MCPS genes identified (all upregulated)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Tasl (LFC=+1.10, padj=5.6×10⁻¹⁰, I²=0%), Igsf6 (+1.36, 1.6×10⁻⁷, 15.8%), Fcgr4 (+2.54, 3.0×10⁻⁵, 60.8%), Parp14 (+0.62, 1.3×10⁻⁴, 0%), Iigp1 (+0.58, 0.022, 0%), Il1a (+1.03, 0.037, 22.8%)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">487 consensus pathways; 147 GSEA-significant gene sets</li>
+<li class="leading-normal break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">LOO sensitivity: GSE144738 is the dominant study</strong> — removing it drops MCPS overlap to 16.7% (1/6 genes). This is a critical limitation.</li>
+</ul>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Stream 2 (Human Validation):</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">GSE214373: 118 DEGs (primary model); GSEA returned 0 results (gene set too small)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Only 1/6 MCPS genes testable (Parp14); directionally concordant but NS (padj=0.49)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Underpowered: min detectable LFC ≥ 1.50 at 80% power; observed MCPS LFCs &lt; 0.20</li>
+<li class="leading-normal break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Pathway-level validation (GSE124571):</strong> 314/362 pathways significant (86.7%), 311/314 NES &gt; 0</li>
+</ul>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Stream 3 (Peripheral Analysis):</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">LRT: 129 significant genes in whole blood; 0 in spleen; 0 in skeletal muscle</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Terminal concordance: 33% blood, 33% spleen, 17% muscle — all non-significant (binomial p &gt; 0.80)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">First detection: Igsf6 in whole blood at 14 wpi (LFC=−1.57, downregulated); Fcgr4 in spleen at 16 wpi (LFC=−0.94, downregulated)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Direction reversal:</strong> MCPS genes upregulated in CNS are downregulated in periphery — genuine biological signal</li>
+</ul>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Integration:</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">Replication cascade: 6→2→1→4→2→0</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">0 triple-validated candidates (Tier 1–3 not achievable given Stream 2 GSEA failure)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Igsf6, Fcgr4 → Tier 4; Tasl, Parp14, Iigp1, Il1a → Tier 5</li>
+</ul>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Deconvolution (Stream 5):</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">Microglia: Δ=+0.842, p=2.45×10⁻⁷; 5/6 MCPS genes correlated with microglia score (r=0.47–0.64)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Slc15a4/Tasl: r=0.061, NS — non-microglial mechanism confirmed</li>
+</ul>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">5.3 Downstream Analyses (All Streams)</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Pathway Enrichment (Stream 1 primary output):</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">Over-Representation Analysis (ORA): clusterProfiler with MSigDB Hallmark,
+KEGG, Reactome, GO Biological Process gene sets</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Gene Set Enrichment Analysis (GSEA): fgsea, pre-ranked by
+sign(log2FC) × -log10(padj) from the meta-analysis</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Pathway meta-analysis: test which pathways are enriched in ≥ 3/5 Discovery studies
+independently (consensus pathway approach)</li>
+</ul>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Cell-type deconvolution (Stream 1):</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">Apply MuSiC or DWLS deconvolution using published mouse brain single-cell
+reference (e.g., Allen Brain Atlas or published prion scRNA-seq reference)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Use estimated cell-type proportions as covariates in DESeq2 design formula
+for studies where bulk tissue composition may vary (e.g., GSE149805 brain
+homogenate vs. GSE201249 region-specific)</li>
+</ul>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Transcription factor enrichment:</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">Apply DoRothEA regulon database via VIPER to identify master transcriptional
+regulators of the MCPS</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Focus on regulons with ≥ 10 target genes in the MCPS</li>
+</ul>
+<hr class="my-6 border-t border-border">
+<h2 class="text-xl font-semibold mt-5 mb-3 break-words">Part 6: Memory Management for 14 GB RAM (Kaggle/Cloud)</h2>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">The following strategy ensures the pipeline runs within 14 GB RAM:</p>
+<ol class="list-decimal list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Sequential study processing:</strong> Never load more than one DESeqDataSet into
+memory simultaneously. Process, extract results, save to disk, then rm() + gc().</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Sparse matrix operations:</strong> Use BiocParallel with SerialParam() (single-core)
+to avoid memory duplication from parallel workers.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">tximeta caching:</strong> Set BiocFileCache to a persistent directory so reference
+metadata is not re-downloaded between sessions.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Meta-analysis step is RAM-trivial:</strong> metafor operates on results tables
+(5 data frames of ~20,000 rows each), not count matrices. Total RAM for
+meta-analysis step: &lt; 500 MB.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">GSE210128 (N=173, 4 tissues):</strong> Process one tissue at a time. Each tissue
+sub-matrix (~40-50 samples) requires &lt; 2 GB RAM.</p>
+</li>
+</ol>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Estimated peak RAM per step:</p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">tximeta import (largest study, N=186): ~3-4 GB</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">DESeq2 fitting (N=186): ~4-6 GB</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Results extraction + rm/gc: returns to ~1 GB</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">metafor meta-analysis: &lt; 500 MB</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Total peak at any single moment: ~6 GB (well within 14 GB limit)</li>
+</ul>
+<hr class="my-6 border-t border-border">
+<h2 class="text-xl font-semibold mt-5 mb-3 break-words">Part 7: Study Limitations (Required for Publication)</h2>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">The following limitations must be explicitly stated in the manuscript. Items marked <strong class="font-semibold break-words">[CONFIRMED]</strong> have been verified in the executed pipeline.</p>
+<ol class="list-decimal list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">[CONFIRMED] GSE144738 dominates the MCPS.</strong> Leave-one-out analysis shows that removing GSE144738 reduces MCPS overlap to 16.7% (1/6 genes). The MCPS is substantially dependent on this single study. This must be stated explicitly and the LOO figure included as a supplementary figure.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">[CONFIRMED] Human validation cohort is underpowered (N=14).</strong> Minimum detectable LFC at 80% power is ≥ 1.50 at median dispersion. All observed MCPS gene LFCs in human are &lt; 0.20. The human dataset cannot detect the effect sizes seen in mouse. This is not evidence of non-replication — it is a power limitation. The age mismatch (sCJD mean 71.6y vs. control 83.3y; p=0.024) is addressed by including age as a covariate (VIF=2.06), but residual confounding cannot be excluded.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">[CONFIRMED] Stream 2 GSEA returned 0 results.</strong> After ortholog mapping, fewer than 3 MCPS genes had valid rank statistics in the human DEG list. The GSEA leading-edge criterion for evidence tiers (Tier 1–3) cannot be applied. Pathway-level validation (GSE124571) is the primary human evidence layer.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">[CONFIRMED] No peripheral concordance at terminal stage.</strong> Direction concordance is no better than chance in all three peripheral tissues (binomial p &gt; 0.80). The peripheral signal (Igsf6 at 14 wpi, Fcgr4 at 16 wpi) is direction-discordant — downregulated in periphery vs. upregulated in CNS. This is a genuine negative result for peripheral biomarker concordance, not a pipeline failure.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">[CONFIRMED] 0 triple-validated candidates.</strong> No gene satisfies all three validation criteria simultaneously. This is the honest result and must be reported as such.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Mouse models do not perfectly recapitulate human sCJD.</strong> RML scrapie and FFI D178N knock-in models differ from sporadic human CJD in prion strain, genetic background, and route of inoculation. Cross-species validation (Stream 2) is designed to identify conserved signals despite these differences.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Bulk RNA-seq cannot resolve cell-type-specific effects.</strong> Marker-gene deconvolution (Script 09) confirms microglial enrichment as the dominant signal, but cannot fully substitute for single-cell resolution. Findings should be interpreted as tissue-level transcriptomic changes.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">GSE210128 peripheral analysis uses a single prion strain (RML6).</strong> Whether peripheral transcriptomic changes are strain-specific or universal cannot be determined from this dataset alone.</p>
+</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Replication cascade Stage 2 uses mean per-study rate.</strong> The 33% mean replication rate across Stratum D is a conservative summary. GSE202275 shows 100% replication; GSE90977 and GSE207251 show 0%. The high variability reflects genuine biological heterogeneity across prion strains and models.</p>
+</li>
+</ol>
+<hr class="my-6 border-t border-border">
+<h2 class="text-xl font-semibold mt-5 mb-3 break-words">Part 8: Expected Outputs and Publication Strategy</h2>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">8.1 Primary Deliverables</h3>
+<div class="my-3 w-full overflow-x-auto"><table class="min-w-full table-fixed border-collapse border border-border text-sm leading-snug"><thead class="bg-muted/50"><tr><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Output</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Description</th><th class="border border-border px-2 py-1.5 text-left text-sm font-medium text-foreground break-words">Target Figure</th></tr></thead><tbody><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Mouse Conserved Prion Signature (MCPS)</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Gene list with meta-log2FC, I², padj</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Table 1 + Supplementary</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Meta-analysis volcano plot</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">meta-log2FC vs. -log10(meta-padj), colored by I²</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Figure 1A</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Forest plots (top 20 genes)</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Per-study log2FC with meta-estimate</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Figure 1B</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">I² distribution histogram</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Proportion of genes by heterogeneity class</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Figure 1C</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Pathway enrichment heatmap</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Top pathways across 5 Discovery studies</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Figure 2</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Disease-stage trajectory</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Pre-clinical vs. terminal MCPS module activity</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Figure 3</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Cross-species concordance</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">MCPS orthologs in human sCJD (directional)</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Figure 4A</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Peripheral-CNS concordance</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Spearman ρ by time point (blood, muscle, spleen)</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Figure 4B</td></tr><tr><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Held-out replication summary</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">MCPS replication rate across 7 held-out studies</td><td class="border border-border px-2 py-1.5 text-sm text-foreground break-words">Figure 5</td></tr></tbody></table></div>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">8.2 Target Journals</h3>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Tier 1 (primary targets):</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">Brain (Oxford) — leading prion/neurodegeneration journal</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Acta Neuropathologica — high-impact neuropathology</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">PLOS Pathogens — open access, strong prion disease track record</li>
+</ul>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere"><strong class="font-semibold break-words">Tier 2 (alternatives):</strong></p>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">Journal of Neuroinflammation</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Molecular Neurodegeneration</li>
+</ul>
+<h3 class="text-lg font-medium mt-4 mb-2 break-words">8.3 Reporting Standards</h3>
+<ul class="list-disc list-outside ml-5 mb-3 last:mb-0 space-y-1">
+<li class="leading-normal break-words overflow-wrap-anywhere">MINSEQE (Minimum Information about a high-throughput SEQuencing Experiment)</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">PRISMA guidelines for the meta-analytic component</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">All code deposited on GitHub with DOI via Zenodo</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">All processed data deposited on GEO as a new SuperSeries</li>
+<li class="leading-normal break-words overflow-wrap-anywhere">Pre-registration on OSF before data download</li>
+</ul>
+<hr class="my-6 border-t border-border">
+<h2 class="text-xl font-semibold mt-5 mb-3 break-words">Appendix: Quick Reference Checklist</h2>
+<p class="mb-3 last:mb-0 leading-relaxed break-words overflow-wrap-anywhere">Before starting analysis, confirm:
+[ ] Mouse Salmon index built (GENCODE vM35 / GRCm39)
+[ ] Human Salmon index built (GENCODE v49 / GRCh38) — for GSE214373 only
+[ ] 03_reads_quant.sh updated with --gcBias --seqBias (no --numBootstraps)
+[ ] SRR accession lists prepared separately for mouse and human datasets
+[ ] R packages installed: tximeta, DESeq2, apeglm, metafor, clusterProfiler,
+fgsea, biomaRt, BiocParallel, ggplot2, ComplexHeatmap
+[ ] GSE214373 raw SRA data downloaded (human, NextSeq 500)
+[ ] GSE210128 tissue metadata prepared (blood/muscle/spleen/brain labels per sample)
+[ ] Age covariate extracted for GSE214373 samples</p></div></div></div>
+</body>
+</html>

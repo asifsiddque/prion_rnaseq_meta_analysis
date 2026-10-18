@@ -1,0 +1,112 @@
+=============================================================
+  Stream 2: Human sCJD Validation — Summary Report
+  06_stream2_human_validation.R [Colab Version]
+=============================================================
+
+DATASET
+-------
+  Accession:   GSE214373
+  Reference:   Dimitriadis et al. (2022) bioRxiv 2022.09.13.507650
+  Organism:    Homo sapiens
+  Tissue:      Frontal cortex (post-mortem)
+  N:           14 total (5 sCJD, 9 control)
+  Age sCJD:    71.6 ± 4.2 y (range 67–77)
+  Age control: 83.3 ± 9.6 y (range 69–103)
+
+AGE CONFOUND
+------------
+  Welch t-test: t = -3.175, p = 0.0083
+  Pearson r(age, condition) = -0.596 (p = 0.0245)
+  VIF(condition) = 2.06, VIF(age) = 1.83
+  Decision: age included as continuous covariate in primary model.
+  Sensitivity analysis run without age to quantify confound impact.
+
+PRIMARY DESeq2 MODEL: ~ age + sex + condition
+---------------------------------------------
+  Design matrix rank: 4/4 (full rank)
+  Genes tested: 22183
+  DEGs (padj <= 0.05, |LFC| >= 0.5): 118 total
+    Upregulated in sCJD:   92
+    Downregulated in sCJD: 26
+
+SENSITIVITY ANALYSIS: ~ sex + condition (age omitted)
+------------------------------------------------------
+  DEGs: 1572 total (647 up, 925 down)
+  Shared with primary model: 112
+  Primary only (robust to age): 6
+  Sensitivity only (age-confounded): 1460
+  Jaccard similarity: 0.071
+
+ORTHOLOG MAPPING
+----------------
+  1:1 human-mouse ortholog pairs: 13520
+  Tested genes with mouse ortholog: 13520 / 22183
+
+MCPS CONCORDANCE
+----------------
+  MCPS size (full):              6 genes
+  MCPS genes testable in human:  1 / 6 (17%)
+  Direction concordance:         1/1 tested (16.7% of full MCPS)
+  Binomial test (H0: 50%):        p = N/A
+  LFC Pearson r:                 N/A (p = N/A)
+  Human-significant MCPS genes:  0
+
+GSEA (MCPS gene set)
+--------------------
+  NES:           N/A
+  p-value:       N/A
+  padj:          N/A
+  Gene set size: N/A
+  Leading edge:  0 genes
+  Permutations:  100000
+
+POWER ANALYSIS (multi-dispersion)
+----------------------------------
+  N sCJD: 5  |  N control: 9
+  Dispersion percentiles — 10th: 0.0728 | 50th: 0.2362 | 90th: 1.1389
+  Target power: 80%  |  alpha: 0.05 (uncorrected)
+  Min. detectable LFC at 80% power:
+    Low (10th pct)         (disp=0.0728): LFC >= 0.75
+    Median (50th pct)      (disp=0.2362): LFC >= 1.50
+  Power envelope (10th–90th pct): LFC 0.75 – 1.50
+  Note: genome-wide BH-FDR correction will further reduce effective power.
+
+LIMITATIONS
+-----------
+  1. Very small N (5 sCJD, 9 control): low statistical power.
+  2. Age-condition correlation (r = -0.60, p = 0.024): controls are
+     ~12 years older. Age covariate included but imprecisely estimated.
+  3. Controls from Queen Square Brain Bank (low-level AD/ageing pathology):
+     age-related transcriptional changes may inflate apparent sCJD signal.
+  4. Source is a preprint (Dimitriadis et al. 2022 bioRxiv); not yet
+     peer-reviewed at time of analysis.
+  5. Post-mortem delay varies (2–12 days for sCJD; 26–168 h for controls):
+     RNA quality differences may introduce technical noise.
+
+OUTPUT FILES
+------------
+  GSE214373_deseq2_primary.csv
+  GSE214373_deseq2_sensitivity.csv
+  GSE214373_sensitivity_comparison.csv
+  GSE214373_orthologs.csv
+  GSE214373_MCPS_concordance.csv
+  GSE214373_GSEA_MCPS.csv
+  GSE214373_power_analysis.csv
+  power_curves_multi_dispersion.csv
+  min_detectable_lfc_by_dispersion.csv
+  fig1a_pca.pdf/png
+  fig1b_sample_distance_heatmap.pdf
+  fig2_age_confound.pdf/png
+  fig3_sensitivity_overlap.pdf/png
+  fig4_volcano_primary.pdf/png
+  fig5_lfc_scatter.pdf/png
+  fig6_gsea_enrichment.pdf/png
+  fig7_power_curve.pdf/png  (3-curve power envelope)
+
+=============================================================
+  Generated: 2026-05-24 14:18:09 UTC
+  R version: R version 4.6.0 (2026-04-24)
+  DESeq2 version: 1.52.0
+  tximeta version: 1.30.0
+  fgsea version: 1.38.0
+=============================================================

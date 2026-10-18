@@ -1,0 +1,15 @@
+sample_id,files,condition,sex,age,tissue,gsm_id
+SRR21742178,../results/salmon_quant/GSE214373/SRR21742178/quant.sf,prion,f,74,frontal_cortex,GSM6604800
+SRR21742177,../results/salmon_quant/GSE214373/SRR21742177/quant.sf,prion,m,67,frontal_cortex,GSM6604801
+SRR21742174,../results/salmon_quant/GSE214373/SRR21742174/quant.sf,prion,f,68,frontal_cortex,GSM6604802
+SRR21742173,../results/salmon_quant/GSE214373/SRR21742173/quant.sf,prion,f,77,frontal_cortex,GSM6604803
+SRR21742175,../results/salmon_quant/GSE214373/SRR21742175/quant.sf,prion,f,72,frontal_cortex,GSM6604804
+SRR21742172,../results/salmon_quant/GSE214373/SRR21742172/quant.sf,control,m,81,frontal_cortex,GSM6604805
+SRR21742176,../results/salmon_quant/GSE214373/SRR21742176/quant.sf,control,m,69,frontal_cortex,GSM6604806
+SRR21742171,../results/salmon_quant/GSE214373/SRR21742171/quant.sf,control,m,87,frontal_cortex,GSM6604807
+SRR21742170,../results/salmon_quant/GSE214373/SRR21742170/quant.sf,control,m,76,frontal_cortex,GSM6604808
+SRR21742167,../results/salmon_quant/GSE214373/SRR21742167/quant.sf,control,m,89,frontal_cortex,GSM6604809
+SRR21742166,../results/salmon_quant/GSE214373/SRR21742166/quant.sf,control,f,79,frontal_cortex,GSM6604810
+SRR21742168,../results/salmon_quant/GSE214373/SRR21742168/quant.sf,control,f,80,frontal_cortex,GSM6604811
+SRR21742165,../results/salmon_quant/GSE214373/SRR21742165/quant.sf,control,f,86,frontal_cortex,GSM6604812
+SRR21742169,../results/salmon_quant/GSE214373/SRR21742169/quant.sf,control,f,103,frontal_cortex,GSM6604813

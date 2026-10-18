@@ -1,0 +1,25 @@
+tissue,tissue_label,wpi,wpi_label,n_mcps_tested,n_mcps_sig,first_detection
+whole_blood,Whole blood,4,4,5,0,FALSE
+whole_blood,Whole blood,8,8,5,0,FALSE
+whole_blood,Whole blood,12,12,0,0,FALSE
+whole_blood,Whole blood,14,14,5,1,TRUE
+whole_blood,Whole blood,16,16,5,0,FALSE
+whole_blood,Whole blood,18,18,5,0,FALSE
+whole_blood,Whole blood,20,20,5,1,FALSE
+whole_blood,Whole blood,22,Term,5,0,FALSE
+spleen,Spleen,4,4,6,0,FALSE
+spleen,Spleen,8,8,6,0,FALSE
+spleen,Spleen,12,12,6,0,FALSE
+spleen,Spleen,14,14,6,0,FALSE
+spleen,Spleen,16,16,6,1,TRUE
+spleen,Spleen,18,18,6,1,FALSE
+spleen,Spleen,20,20,6,0,FALSE
+spleen,Spleen,22,Term,6,0,FALSE
+skeletal_muscle,Skeletal muscle,4,4,3,0,FALSE
+skeletal_muscle,Skeletal muscle,8,8,3,0,FALSE
+skeletal_muscle,Skeletal muscle,12,12,3,0,FALSE
+skeletal_muscle,Skeletal muscle,14,14,3,0,FALSE
+skeletal_muscle,Skeletal muscle,16,16,3,0,FALSE
+skeletal_muscle,Skeletal muscle,18,18,3,0,FALSE
+skeletal_muscle,Skeletal muscle,20,20,3,0,FALSE
+skeletal_muscle,Skeletal muscle,22,Term,3,0,FALSE

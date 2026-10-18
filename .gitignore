@@ -1,0 +1,37 @@
+# ── Large regenerable intermediates (see README → "Large data files") ──
+# Salmon quantifications (~7 GB) — regenerate with scripts 00–03 from public SRA/GEO data
+results/salmon_quant/
+# Per-sample QC reports (~2 GB) — regenerate with script 01
+results/qc/
+
+# ── Raw data (transient / re-downloadable) ──
+data/raw/
+*.fastq.gz
+*.fq.gz
+
+# ── Reference assets rebuilt by script 02; API caches re-downloaded automatically ──
+resources/genome_indices/
+resources/cache/
+
+# ── Manuscript reference PDFs (cite by DOI instead) ──
+manuscript/papers/
+
+# ── renv project-local library (restored from renv.lock via renv_setup.R) ──
+renv/library/
+renv/staging/
+
+# ── R session cruft ──
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.positai
+
+# ── Notebook checkpoints / Python cruft ──
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# ── OS cruft ──
+.DS_Store
+Thumbs.ini

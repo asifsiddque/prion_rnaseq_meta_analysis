@@ -1,0 +1,5 @@
+study,mcps_total,n_tested,n_significant,n_same_direction,replication_rate_pct
+GSE90977,6,6,1,0,0
+GSE124932,6,6,3,3,50
+GSE207251,6,4,0,0,0
+GSE202275,6,6,6,6,100

@@ -1,0 +1,23 @@
+name: salmon-rnaseq
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Core tools
+  - sra-tools                   # SRA toolkit for downloading sequencing data
+  - parallel-fastq-dump         # Download FASTQ files from SRA or ENA repositories. (https://github.com/rvalieris/parallel-fastq-dump)
+  - salmon                      # transcript quantification
+  - fastqc                      # optional QC
+  - multiqc                     # summary reports
+
+  # R base (required for scripts 04–08)
+  # Pin to 4.3.x to match Bioconductor 3.18 (renv.lock)
+  - r-base>=4.3,<4.4            # R language runtime
+
+  # renv — R package reproducibility manager
+  # Installs the project-local R library from renv.lock.
+  # After activating this conda env, run:
+  #   Rscript scripts/renv_setup.R
+  - r-renv>=1.0.7               # R package version locking (https://rstudio.github.io/renv/)

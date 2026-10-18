@@ -1,0 +1,7 @@
+sample_id,files,condition,sex,gsm_id
+SRR19907652,../results/salmon_quant/GSE207251/SRR19907652/quant.sf,prion,male,GSM6283031
+SRR19907651,../results/salmon_quant/GSE207251/SRR19907651/quant.sf,prion,male,GSM6283032
+SRR19907650,../results/salmon_quant/GSE207251/SRR19907650/quant.sf,prion,male,GSM6283033
+SRR19907649,../results/salmon_quant/GSE207251/SRR19907649/quant.sf,control,male,GSM6283034
+SRR19907648,../results/salmon_quant/GSE207251/SRR19907648/quant.sf,control,male,GSM6283035
+SRR19907647,../results/salmon_quant/GSE207251/SRR19907647/quant.sf,control,male,GSM6283036

@@ -1,0 +1,9 @@
+sample_id,files,condition,genotype,age,gsm_id
+SRR8429837,../results/salmon_quant/GSE124932/SRR8429837/quant.sf,control,Wild type,2m,GSM3559574
+SRR8429838,../results/salmon_quant/GSE124932/SRR8429838/quant.sf,control,Wild type,2m,GSM3559575
+SRR8429839,../results/salmon_quant/GSE124932/SRR8429839/quant.sf,control,Wild type,2m,GSM3559576
+SRR8429840,../results/salmon_quant/GSE124932/SRR8429840/quant.sf,control,Wild type,2m,GSM3559577
+SRR8429845,../results/salmon_quant/GSE124932/SRR8429845/quant.sf,prion,Wild type,6m,GSM3559582
+SRR8429846,../results/salmon_quant/GSE124932/SRR8429846/quant.sf,prion,Wild type,6m,GSM3559583
+SRR8429847,../results/salmon_quant/GSE124932/SRR8429847/quant.sf,prion,Wild type,6m,GSM3559584
+SRR8429848,../results/salmon_quant/GSE124932/SRR8429848/quant.sf,prion,Wild type,6m,GSM3559585

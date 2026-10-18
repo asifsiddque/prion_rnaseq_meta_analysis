@@ -1,0 +1,138 @@
+sample_id,files,condition,time_point,tissue,gsm_id,layout
+SRR11017791,../results/salmon_quant/GSE144738/SRR11017791/quant.sf,control,4 wpi,Hippocampus,GSM4294560,paired
+SRR11017792,../results/salmon_quant/GSE144738/SRR11017792/quant.sf,control,4 wpi,Hippocampus,GSM4294561,paired
+SRR11017793,../results/salmon_quant/GSE144738/SRR11017793/quant.sf,control,4 wpi,Hippocampus,GSM4294562,paired
+SRR11017794,../results/salmon_quant/GSE144738/SRR11017794/quant.sf,prion,4 wpi,Hippocampus,GSM4294563,paired
+SRR11017795,../results/salmon_quant/GSE144738/SRR11017795/quant.sf,prion,4 wpi,Hippocampus,GSM4294564,paired
+SRR11017796,../results/salmon_quant/GSE144738/SRR11017796/quant.sf,prion,4 wpi,Hippocampus,GSM4294565,paired
+SRR11017797,../results/salmon_quant/GSE144738/SRR11017797/quant.sf,control,8 wpi,Hippocampus,GSM4294566,paired
+SRR11017798,../results/salmon_quant/GSE144738/SRR11017798/quant.sf,control,8 wpi,Hippocampus,GSM4294567,paired
+SRR11017799,../results/salmon_quant/GSE144738/SRR11017799/quant.sf,control,8 wpi,Hippocampus,GSM4294568,paired
+SRR11017800,../results/salmon_quant/GSE144738/SRR11017800/quant.sf,prion,8 wpi,Hippocampus,GSM4294569,paired
+SRR11017801,../results/salmon_quant/GSE144738/SRR11017801/quant.sf,prion,8 wpi,Hippocampus,GSM4294570,paired
+SRR11017802,../results/salmon_quant/GSE144738/SRR11017802/quant.sf,prion,8 wpi,Hippocampus,GSM4294571,paired
+SRR11017803,../results/salmon_quant/GSE144738/SRR11017803/quant.sf,control,12 wpi,Hippocampus,GSM4294572,paired
+SRR11017804,../results/salmon_quant/GSE144738/SRR11017804/quant.sf,control,12 wpi,Hippocampus,GSM4294573,paired
+SRR11017805,../results/salmon_quant/GSE144738/SRR11017805/quant.sf,control,12 wpi,Hippocampus,GSM4294574,paired
+SRR11017806,../results/salmon_quant/GSE144738/SRR11017806/quant.sf,prion,12 wpi,Hippocampus,GSM4294575,paired
+SRR11017807,../results/salmon_quant/GSE144738/SRR11017807/quant.sf,prion,12 wpi,Hippocampus,GSM4294576,paired
+SRR11017808,../results/salmon_quant/GSE144738/SRR11017808/quant.sf,prion,12 wpi,Hippocampus,GSM4294577,paired
+SRR11017809,../results/salmon_quant/GSE144738/SRR11017809/quant.sf,control,14 wpi,Hippocampus,GSM4294578,paired
+SRR11017810,../results/salmon_quant/GSE144738/SRR11017810/quant.sf,control,14 wpi,Hippocampus,GSM4294579,paired
+SRR11017811,../results/salmon_quant/GSE144738/SRR11017811/quant.sf,control,14 wpi,Hippocampus,GSM4294580,paired
+SRR11017812,../results/salmon_quant/GSE144738/SRR11017812/quant.sf,prion,14 wpi,Hippocampus,GSM4294581,paired
+SRR11017813,../results/salmon_quant/GSE144738/SRR11017813/quant.sf,prion,14 wpi,Hippocampus,GSM4294582,paired
+SRR11017814,../results/salmon_quant/GSE144738/SRR11017814/quant.sf,prion,14 wpi,Hippocampus,GSM4294583,paired
+SRR11017815,../results/salmon_quant/GSE144738/SRR11017815/quant.sf,control,16 wpi,Hippocampus,GSM4294584,paired
+SRR11017816,../results/salmon_quant/GSE144738/SRR11017816/quant.sf,control,16 wpi,Hippocampus,GSM4294585,paired
+SRR11017817,../results/salmon_quant/GSE144738/SRR11017817/quant.sf,control,16 wpi,Hippocampus,GSM4294586,paired
+SRR11017818,../results/salmon_quant/GSE144738/SRR11017818/quant.sf,prion,16 wpi,Hippocampus,GSM4294587,paired
+SRR11017819,../results/salmon_quant/GSE144738/SRR11017819/quant.sf,prion,16 wpi,Hippocampus,GSM4294588,paired
+SRR11017820,../results/salmon_quant/GSE144738/SRR11017820/quant.sf,prion,16 wpi,Hippocampus,GSM4294589,paired
+SRR11017821,../results/salmon_quant/GSE144738/SRR11017821/quant.sf,control,18 wpi,Hippocampus,GSM4294590,paired
+SRR11017822,../results/salmon_quant/GSE144738/SRR11017822/quant.sf,control,18 wpi,Hippocampus,GSM4294591,paired
+SRR11017823,../results/salmon_quant/GSE144738/SRR11017823/quant.sf,control,18 wpi,Hippocampus,GSM4294592,paired
+SRR11017824,../results/salmon_quant/GSE144738/SRR11017824/quant.sf,prion,18 wpi,Hippocampus,GSM4294593,paired
+SRR11017825,../results/salmon_quant/GSE144738/SRR11017825/quant.sf,prion,18 wpi,Hippocampus,GSM4294594,paired
+SRR11017826,../results/salmon_quant/GSE144738/SRR11017826/quant.sf,prion,18 wpi,Hippocampus,GSM4294595,paired
+SRR11017827,../results/salmon_quant/GSE144738/SRR11017827/quant.sf,control,20 wpi,Hippocampus,GSM4294596,paired
+SRR11017828,../results/salmon_quant/GSE144738/SRR11017828/quant.sf,control,20 wpi,Hippocampus,GSM4294597,paired
+SRR11017829,../results/salmon_quant/GSE144738/SRR11017829/quant.sf,prion,20 wpi,Hippocampus,GSM4294598,paired
+SRR11017831,../results/salmon_quant/GSE144738/SRR11017831/quant.sf,prion,20 wpi,Hippocampus,GSM4294599,paired
+SRR11017832,../results/salmon_quant/GSE144738/SRR11017832/quant.sf,prion,20 wpi,Hippocampus,GSM4294600,paired
+SRR11017833,../results/salmon_quant/GSE144738/SRR11017833/quant.sf,control,terminal,Hippocampus,GSM4294601,paired
+SRR11017834,../results/salmon_quant/GSE144738/SRR11017834/quant.sf,control,terminal,Hippocampus,GSM4294602,paired
+SRR11017835,../results/salmon_quant/GSE144738/SRR11017835/quant.sf,control,terminal,Hippocampus,GSM4294603,paired
+SRR11017836,../results/salmon_quant/GSE144738/SRR11017836/quant.sf,prion,terminal,Hippocampus,GSM4294604,paired
+SRR11017837,../results/salmon_quant/GSE144738/SRR11017837/quant.sf,prion,terminal,Hippocampus,GSM4294605,paired
+SRR11017838,../results/salmon_quant/GSE144738/SRR11017838/quant.sf,prion,terminal,Hippocampus,GSM4294606,paired
+SRR11017839,../results/salmon_quant/GSE144738/SRR11017839/quant.sf,control,8 wpi,Hippocampus,GSM4294607,paired
+SRR11017840,../results/salmon_quant/GSE144738/SRR11017840/quant.sf,control,8 wpi,Hippocampus,GSM4294608,paired
+SRR11017841,../results/salmon_quant/GSE144738/SRR11017841/quant.sf,control,8 wpi,Hippocampus,GSM4294609,paired
+SRR11017842,../results/salmon_quant/GSE144738/SRR11017842/quant.sf,prion,8 wpi,Hippocampus,GSM4294610,paired
+SRR11017843,../results/salmon_quant/GSE144738/SRR11017843/quant.sf,prion,8 wpi,Hippocampus,GSM4294611,paired
+SRR11017844,../results/salmon_quant/GSE144738/SRR11017844/quant.sf,prion,8 wpi,Hippocampus,GSM4294612,paired
+SRR11017845,../results/salmon_quant/GSE144738/SRR11017845/quant.sf,control,terminal,Hippocampus,GSM4294613,paired
+SRR11017846,../results/salmon_quant/GSE144738/SRR11017846/quant.sf,control,terminal,Hippocampus,GSM4294614,paired
+SRR11017847,../results/salmon_quant/GSE144738/SRR11017847/quant.sf,prion,terminal,Hippocampus,GSM4294615,paired
+SRR11017848,../results/salmon_quant/GSE144738/SRR11017848/quant.sf,prion,terminal,Hippocampus,GSM4294616,paired
+SRR11017849,../results/salmon_quant/GSE144738/SRR11017849/quant.sf,prion,terminal,Hippocampus,GSM4294617,paired
+SRR11017850,../results/salmon_quant/GSE144738/SRR11017850/quant.sf,control,8 wpi,Hippocampus,GSM4294618,paired
+SRR11017851,../results/salmon_quant/GSE144738/SRR11017851/quant.sf,control,8 wpi,Hippocampus,GSM4294619,paired
+SRR11017852,../results/salmon_quant/GSE144738/SRR11017852/quant.sf,prion,8 wpi,Hippocampus,GSM4294620,paired
+SRR11017853,../results/salmon_quant/GSE144738/SRR11017853/quant.sf,prion,8 wpi,Hippocampus,GSM4294621,paired
+SRR11017854,../results/salmon_quant/GSE144738/SRR11017854/quant.sf,prion,8 wpi,Hippocampus,GSM4294622,paired
+SRR11017855,../results/salmon_quant/GSE144738/SRR11017855/quant.sf,control,terminal,Hippocampus,GSM4294623,paired
+SRR11017856,../results/salmon_quant/GSE144738/SRR11017856/quant.sf,control,terminal,Hippocampus,GSM4294624,paired
+SRR11017857,../results/salmon_quant/GSE144738/SRR11017857/quant.sf,control,terminal,Hippocampus,GSM4294625,paired
+SRR11017858,../results/salmon_quant/GSE144738/SRR11017858/quant.sf,prion,terminal,Hippocampus,GSM4294626,paired
+SRR11017859,../results/salmon_quant/GSE144738/SRR11017859/quant.sf,prion,terminal,Hippocampus,GSM4294627,paired
+SRR11017860,../results/salmon_quant/GSE144738/SRR11017860/quant.sf,prion,terminal,Hippocampus,GSM4294628,paired
+SRR11017861,../results/salmon_quant/GSE144738/SRR11017861/quant.sf,control,terminal,Hippocampus,GSM4294629,paired
+SRR11017862,../results/salmon_quant/GSE144738/SRR11017862/quant.sf,control,terminal,Hippocampus,GSM4294630,paired
+SRR11017863,../results/salmon_quant/GSE144738/SRR11017863/quant.sf,control,terminal,Hippocampus,GSM4294631,paired
+SRR11017864,../results/salmon_quant/GSE144738/SRR11017864/quant.sf,prion,terminal,Hippocampus,GSM4294632,paired
+SRR11017865,../results/salmon_quant/GSE144738/SRR11017865/quant.sf,prion,terminal,Hippocampus,GSM4294633,paired
+SRR11017866,../results/salmon_quant/GSE144738/SRR11017866/quant.sf,prion,terminal,Hippocampus,GSM4294634,paired
+SRR11017867,../results/salmon_quant/GSE144738/SRR11017867/quant.sf,control,8 wpi,Hippocampus,GSM4294635,paired
+SRR11017868,../results/salmon_quant/GSE144738/SRR11017868/quant.sf,control,8 wpi,Hippocampus,GSM4294636,paired
+SRR11017869,../results/salmon_quant/GSE144738/SRR11017869/quant.sf,control,8 wpi,Hippocampus,GSM4294637,paired
+SRR11017870,../results/salmon_quant/GSE144738/SRR11017870/quant.sf,control,8 wpi,Hippocampus,GSM4294638,paired
+SRR11017871,../results/salmon_quant/GSE144738/SRR11017871/quant.sf,control,8 wpi,Hippocampus,GSM4294639,paired
+SRR11017872,../results/salmon_quant/GSE144738/SRR11017872/quant.sf,prion,8 wpi,Hippocampus,GSM4294640,paired
+SRR11017873,../results/salmon_quant/GSE144738/SRR11017873/quant.sf,prion,8 wpi,Hippocampus,GSM4294641,paired
+SRR11017874,../results/salmon_quant/GSE144738/SRR11017874/quant.sf,prion,8 wpi,Hippocampus,GSM4294642,paired
+SRR11017875,../results/salmon_quant/GSE144738/SRR11017875/quant.sf,prion,8 wpi,Hippocampus,GSM4294643,paired
+SRR11017876,../results/salmon_quant/GSE144738/SRR11017876/quant.sf,prion,8 wpi,Hippocampus,GSM4294644,paired
+SRR11017877,../results/salmon_quant/GSE144738/SRR11017877/quant.sf,control,8 wpi,Hippocampus,GSM4294645,paired
+SRR11017878,../results/salmon_quant/GSE144738/SRR11017878/quant.sf,control,8 wpi,Hippocampus,GSM4294646,paired
+SRR11017879,../results/salmon_quant/GSE144738/SRR11017879/quant.sf,control,8 wpi,Hippocampus,GSM4294647,paired
+SRR11017880,../results/salmon_quant/GSE144738/SRR11017880/quant.sf,control,8 wpi,Hippocampus,GSM4294648,paired
+SRR11017881,../results/salmon_quant/GSE144738/SRR11017881/quant.sf,control,8 wpi,Hippocampus,GSM4294649,paired
+SRR11017882,../results/salmon_quant/GSE144738/SRR11017882/quant.sf,prion,8 wpi,Hippocampus,GSM4294650,paired
+SRR11017883,../results/salmon_quant/GSE144738/SRR11017883/quant.sf,prion,8 wpi,Hippocampus,GSM4294651,paired
+SRR11017884,../results/salmon_quant/GSE144738/SRR11017884/quant.sf,prion,8 wpi,Hippocampus,GSM4294652,paired
+SRR11017886,../results/salmon_quant/GSE144738/SRR11017886/quant.sf,prion,8 wpi,Hippocampus,GSM4294653,paired
+SRR11017887,../results/salmon_quant/GSE144738/SRR11017887/quant.sf,prion,8 wpi,Hippocampus,GSM4294654,paired
+SRR11017888,../results/salmon_quant/GSE144738/SRR11017888/quant.sf,control,terminal,Hippocampus,GSM4294655,paired
+SRR11017889,../results/salmon_quant/GSE144738/SRR11017889/quant.sf,control,terminal,Hippocampus,GSM4294656,paired
+SRR11017890,../results/salmon_quant/GSE144738/SRR11017890/quant.sf,control,terminal,Hippocampus,GSM4294657,paired
+SRR11017891,../results/salmon_quant/GSE144738/SRR11017891/quant.sf,control,terminal,Hippocampus,GSM4294658,paired
+SRR11017892,../results/salmon_quant/GSE144738/SRR11017892/quant.sf,prion,terminal,Hippocampus,GSM4294659,paired
+SRR11017893,../results/salmon_quant/GSE144738/SRR11017893/quant.sf,prion,terminal,Hippocampus,GSM4294660,paired
+SRR11017894,../results/salmon_quant/GSE144738/SRR11017894/quant.sf,prion,terminal,Hippocampus,GSM4294661,paired
+SRR11017895,../results/salmon_quant/GSE144738/SRR11017895/quant.sf,prion,terminal,Hippocampus,GSM4294662,paired
+SRR11017896,../results/salmon_quant/GSE144738/SRR11017896/quant.sf,prion,terminal,Hippocampus,GSM4294663,paired
+SRR11017897,../results/salmon_quant/GSE144738/SRR11017897/quant.sf,control,terminal,Hippocampus,GSM4294664,paired
+SRR11017898,../results/salmon_quant/GSE144738/SRR11017898/quant.sf,control,terminal,Hippocampus,GSM4294665,paired
+SRR11017899,../results/salmon_quant/GSE144738/SRR11017899/quant.sf,control,terminal,Hippocampus,GSM4294666,paired
+SRR11017900,../results/salmon_quant/GSE144738/SRR11017900/quant.sf,control,terminal,Hippocampus,GSM4294667,paired
+SRR11017901,../results/salmon_quant/GSE144738/SRR11017901/quant.sf,prion,terminal,Hippocampus,GSM4294668,paired
+SRR11017902,../results/salmon_quant/GSE144738/SRR11017902/quant.sf,prion,terminal,Hippocampus,GSM4294669,paired
+SRR11017903,../results/salmon_quant/GSE144738/SRR11017903/quant.sf,prion,terminal,Hippocampus,GSM4294670,paired
+SRR11017904,../results/salmon_quant/GSE144738/SRR11017904/quant.sf,prion,terminal,Hippocampus,GSM4294671,paired
+SRR11017905,../results/salmon_quant/GSE144738/SRR11017905/quant.sf,prion,terminal,Hippocampus,GSM4294672,paired
+SRR11999701,../results/salmon_quant/GSE144738/SRR11999701/quant.sf,prion,8 wpi,Hippocampus,GSM4612850,single
+SRR11999702,../results/salmon_quant/GSE144738/SRR11999702/quant.sf,prion,8 wpi,Hippocampus,GSM4612851,single
+SRR11999703,../results/salmon_quant/GSE144738/SRR11999703/quant.sf,prion,8 wpi,Hippocampus,GSM4612852,single
+SRR11999704,../results/salmon_quant/GSE144738/SRR11999704/quant.sf,control,8 wpi,Hippocampus,GSM4612853,single
+SRR11999705,../results/salmon_quant/GSE144738/SRR11999705/quant.sf,control,8 wpi,Hippocampus,GSM4612854,single
+SRR11999706,../results/salmon_quant/GSE144738/SRR11999706/quant.sf,control,8 wpi,Hippocampus,GSM4612855,single
+SRR11999707,../results/salmon_quant/GSE144738/SRR11999707/quant.sf,prion,8 wpi,Hippocampus,GSM4612856,paired
+SRR11999708,../results/salmon_quant/GSE144738/SRR11999708/quant.sf,prion,8 wpi,Hippocampus,GSM4612857,paired
+SRR11999709,../results/salmon_quant/GSE144738/SRR11999709/quant.sf,prion,8 wpi,Hippocampus,GSM4612858,paired
+SRR11999710,../results/salmon_quant/GSE144738/SRR11999710/quant.sf,control,8 wpi,Hippocampus,GSM4612859,paired
+SRR11999711,../results/salmon_quant/GSE144738/SRR11999711/quant.sf,control,8 wpi,Hippocampus,GSM4612860,paired
+SRR11999712,../results/salmon_quant/GSE144738/SRR11999712/quant.sf,control,8 wpi,Hippocampus,GSM4612861,paired
+SRR11999713,../results/salmon_quant/GSE144738/SRR11999713/quant.sf,prion,12 wpi,Hippocampus,GSM4612862,paired
+SRR11999714,../results/salmon_quant/GSE144738/SRR11999714/quant.sf,prion,12 wpi,Hippocampus,GSM4612863,paired
+SRR11999691,../results/salmon_quant/GSE144738/SRR11999691/quant.sf,prion,12 wpi,Hippocampus,GSM4612864,paired
+SRR11999692,../results/salmon_quant/GSE144738/SRR11999692/quant.sf,control,12 wpi,Hippocampus,GSM4612865,paired
+SRR11999693,../results/salmon_quant/GSE144738/SRR11999693/quant.sf,control,12 wpi,Hippocampus,GSM4612866,paired
+SRR11999694,../results/salmon_quant/GSE144738/SRR11999694/quant.sf,control,12 wpi,Hippocampus,GSM4612867,paired
+SRR11999695,../results/salmon_quant/GSE144738/SRR11999695/quant.sf,prion,terminal,Hippocampus,GSM4612868,paired
+SRR11999696,../results/salmon_quant/GSE144738/SRR11999696/quant.sf,prion,terminal,Hippocampus,GSM4612869,paired
+SRR11999697,../results/salmon_quant/GSE144738/SRR11999697/quant.sf,prion,terminal,Hippocampus,GSM4612870,paired
+SRR11999698,../results/salmon_quant/GSE144738/SRR11999698/quant.sf,control,terminal,Hippocampus,GSM4612871,paired
+SRR11999699,../results/salmon_quant/GSE144738/SRR11999699/quant.sf,control,terminal,Hippocampus,GSM4612872,paired
+SRR11999700,../results/salmon_quant/GSE144738/SRR11999700/quant.sf,control,terminal,Hippocampus,GSM4612873,paired

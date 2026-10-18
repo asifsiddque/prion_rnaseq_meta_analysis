@@ -1,0 +1,8 @@
+comparison,x_col,y_col,n,pearson_r,pearson_p,ci_lower,ci_upper
+S1 vs S2,meta_log2FC,human_lfc,1,NA,NA,NA,NA
+S1 vs S3 blood,meta_log2FC,whole_blood_lfc,5,0.0948,0.8795016760577978,-0.8593,0.9016
+S1 vs S3 spleen,meta_log2FC,spleen_lfc,6,-0.5448,0.2636493468658368,-0.9405,0.4782
+S1 vs S3 muscle,meta_log2FC,skeletal_muscle_lfc,3,NA,NA,NA,NA
+S2 vs S3 blood,human_lfc,whole_blood_lfc,1,NA,NA,NA,NA
+S2 vs S3 spleen,human_lfc,spleen_lfc,1,NA,NA,NA,NA
+S2 vs S3 muscle,human_lfc,skeletal_muscle_lfc,1,NA,NA,NA,NA

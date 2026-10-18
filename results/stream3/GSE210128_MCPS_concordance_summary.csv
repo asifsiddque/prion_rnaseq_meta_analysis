@@ -1,0 +1,4 @@
+tissue,tissue_label,n_mcps_total,n_tested,n_dir_match,pct_of_mcps,pct_of_tested,binom_pvalue,binom_ci_lower,lfc_pearson_r,lfc_pearson_p,n_terminal_sig
+whole_blood,Whole blood,6,5,2,33.3,40,0.8125,0.07644039141232895,0.095,0.8795016760577978,0
+spleen,Spleen,6,6,2,33.3,33.3,0.890625,0.06284989170835442,-0.545,0.2636493468658368,0
+skeletal_muscle,Skeletal muscle,6,3,1,16.7,33.3,0.875,0.01695242750844151,-0.469,0.6891083960621256,0

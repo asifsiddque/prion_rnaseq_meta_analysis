@@ -1,0 +1,7 @@
+sample_id,files,condition,inoculation,gsm_id
+SRR19091884,../results/salmon_quant/GSE202275/SRR19091884/quant.sf,control,post natal week 4,GSM6107611
+SRR19091883,../results/salmon_quant/GSE202275/SRR19091883/quant.sf,control,post natal week 4,GSM6107613
+SRR19091882,../results/salmon_quant/GSE202275/SRR19091882/quant.sf,control,post natal week 4,GSM6107615
+SRR19091878,../results/salmon_quant/GSE202275/SRR19091878/quant.sf,prion,post natal week 4,GSM6107623
+SRR19091877,../results/salmon_quant/GSE202275/SRR19091877/quant.sf,prion,post natal week 4,GSM6107625
+SRR19091876,../results/salmon_quant/GSE202275/SRR19091876/quant.sf,prion,post natal week 4,GSM6107627
