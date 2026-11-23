@@ -1,4 +1,0 @@
-gene_symbol,gene_biotype,meta_padj,I2,n_studies,mcps_lfc,terminal_lfc,terminal_padj,terminal_sig,direction_match,tissue
-Parp14,protein_coding,1.266255013803222e-4,0,3,0.6155622125570398,0.028099299979028613,0.8308271078491283,FALSE,TRUE,skeletal_muscle
-Igsf6,protein_coding,1.5521831576332154e-7,15.82415983875608,3,1.3631141850917872,-9.054980040800408e-4,0.9947588650997944,FALSE,FALSE,skeletal_muscle
-Iigp1,protein_coding,0.02202028679883132,0,3,0.582550665754452,-8.336370115163658e-4,0.9994571047622822,FALSE,FALSE,skeletal_muscle

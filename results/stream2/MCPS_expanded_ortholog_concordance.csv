@@ -1,7 +1,0 @@
-mouse_symbol,human_symbol,mapping_type,human_lfc,human_padj,human_sig,found_in_human,note
-Tasl,SLC15A4,1:1,-0.017065186616285734,0.9656329724327813,FALSE,TRUE,Slc15a4 is the official gene name for Tasl; SLC15A4 is the human 1:1 ortholog
-Igsf6,IGSF6,1:1,0.014486980606795567,NA,FALSE,TRUE,IGSF6 is the direct human ortholog
-Fcgr4,FCGR3A,best_paralog,0.013733073578680711,0.9195037974209259,FALSE,TRUE,FCGR3A is the closest human functional paralog (Fc receptor family); not 1:1
-Parp14,PARP14,1:1,0.1862412040001328,0.48544402864716935,FALSE,TRUE,PARP14 is the direct human 1:1 ortholog (already in primary map)
-Il1a,IL1A,1:1,NA,NA,FALSE,FALSE,IL1A is the direct human 1:1 ortholog
-Iigp1,NA,no_ortholog,NA,NA,FALSE,FALSE,Rodent-specific interferon-inducible GTPase; no human ortholog exists
